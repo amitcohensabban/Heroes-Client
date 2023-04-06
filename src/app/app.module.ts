@@ -10,6 +10,7 @@ import { SignupPageComponent } from './components/auth/signup-page/signup-page.c
 import { LoginFormComponent} from './components/auth/login-page/login-form/login-form.component';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,SignupFormComponent,SignupPageComponent,LoginFormComponent,LoginPageComponent, HeaderComponent
@@ -18,9 +19,9 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RouterModule,AppRoutingModule
+    RouterModule,AppRoutingModule,HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
