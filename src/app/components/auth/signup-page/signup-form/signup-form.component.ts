@@ -23,12 +23,15 @@ export class SignupFormComponent implements OnInit  {
   }
   onSubmit(){
     console.log(this.signupForm);
-
+    const firstName: string = this.signupForm.get('firstName')?.value;
+    const lastName: string = this.signupForm.get('lastName')?.value;
     const email: string = this.signupForm.get('email')?.value;
     const password: string = this.signupForm.get('password')?.value;
+    const confirmPassword: string = this.signupForm.get('password')?.value;
+
 
     this.authService
-      .login({ email, password })
+      .login({firstName,lastName, email, password,confirmPassword })
       .subscribe((res: any): void => {
         console.log(res);
       });

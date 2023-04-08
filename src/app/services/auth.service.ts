@@ -23,7 +23,7 @@ export class AuthService {
 
   }
 
-  login(data: { email: string; password: string }) {
+  login(data: {firstName:string,lastName:string, email: string, password: string,confirmPassword:string }) {
     return this.http.post('https://localhost:7077/api/Guide', data).pipe(
       tap((res: any): void => {
         const token: string = res.token;
