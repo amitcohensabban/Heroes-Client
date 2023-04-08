@@ -31,7 +31,7 @@ export class SignupFormComponent implements OnInit  {
 
 
     this.authService
-      .login({firstName,lastName, email, password,confirmPassword })
+      .signUp({firstName,lastName, email, password,confirmPassword })
       .subscribe((res: any): void => {
         console.log(res);
       });

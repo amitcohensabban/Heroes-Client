@@ -8,8 +8,28 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  ngOnInit(): void {
+  loginForm!: FormGroup;
 
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: this.fb.control('', Validators.required),
+      password: this.fb.control('', Validators.required),
+    });
+  }
+
+  handleSubmit(): void {
+    console.log(this.loginForm);
+
+    const email: string = this.loginForm.get('email')?.value;
+    const password: string = this.loginForm.get('password')?.value;
+
+    this.authService
+      .login({ email, password })
+      .subscribe((res: any): void => {
+        console.log(res);
+      });
   }
 
 

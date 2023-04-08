@@ -23,7 +23,7 @@ export class AuthService {
 
   }
 
-  login(data: {firstName:string,lastName:string, email: string, password: string,confirmPassword:string }) {
+  signUp(data: {firstName:string,lastName:string, email: string, password: string,confirmPassword:string }) {
     return this.http.post('https://localhost:7077/api/Guide', data).pipe(
       tap((res: any): void => {
         const token: string = res.token;
@@ -34,6 +34,19 @@ export class AuthService {
         this.router.navigate(['/all-heroes']);
       })
     );
+  }
+
+  login(data:{email:string, password:string}){
+    return this.http.post('https://localhost:7077/api/Guide/login', data).pipe(
+      tap((res: any): void => {
+        const token: string = res.token;
+        localStorage.setItem('token', res.token);
+        this.setToken(token);
+
+        this.router.navigate(['/all-heroes']);
+      })
+    );
+
   }
   setToken(value: string) {
     this._token.next(value);
