@@ -3,27 +3,26 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
-
-@Injectable(
-  {
-  providedIn: 'root'
-}
-)
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   private _token: BehaviorSubject<string | null> = new BehaviorSubject<
-  string | null
+    string | null
   >('');
+
 
   token: Observable<string | null> = this._token.asObservable();
 
+  constructor(private router: Router, private http: HttpClient) {}
 
-  constructor( private router: Router,private http: HttpClient) {
-
-
-  }
-
-  signUp(data: {firstName:string,lastName:string, email: string, password: string,confirmPassword:string }) {
+  signUp(data: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }) {
     return this.http.post('https://localhost:7077/api/Guide', data).pipe(
       tap((res: any): void => {
         const token: string = res.token;
@@ -36,7 +35,7 @@ export class AuthService {
     );
   }
 
-  login(data:{email:string, password:string}){
+  login(data: { email: string; password: string }) {
     return this.http.post('https://localhost:7077/api/Guide/login', data).pipe(
       tap((res: any): void => {
         const token: string = res.token;
@@ -46,10 +45,8 @@ export class AuthService {
         this.router.navigate(['/all-heroes']);
       })
     );
-
   }
   setToken(value: string) {
     this._token.next(value);
   }
-
 }
