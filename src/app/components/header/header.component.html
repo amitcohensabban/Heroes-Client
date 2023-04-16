@@ -1,9 +1,13 @@
 <div class="header-container">
 <h1>HEROES</h1>
 <div class="links">
-  <a routerLink="login">LOGIN</a>
-  <a routerLink="sign-up">signup</a>
-  <a routerLink="all-heroes">all heroes</a>
-  <a routerLink="my-heroes">my heroes</a>
+  <a routerLink="login" *ngIf="!isUserLoggedIn">LOGIN</a>
+  <a routerLink="sign-up" *ngIf="!isUserLoggedIn">SIGN-UP</a>
+  <a routerLink="all-heroes" *ngIf="isUserLoggedIn">ALL HEROES</a>
+  <a routerLink="my-heroes" *ngIf="isUserLoggedIn">MY HEROES</a>
+</div>
+<div class="log_out_button" *ngIf="isUserLoggedIn" (click)="logOut()">
+  <div class="log_out_profile_pic"></div>
+  <span class="log_out_text">Log out</span>
 </div>
 </div>

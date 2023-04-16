@@ -13,6 +13,7 @@ export class AuthService {
 
 
   token: Observable<string | null> = this._token.asObservable();
+  isUserLoggedIn: BehaviorSubject<boolean> =new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -41,7 +42,7 @@ export class AuthService {
         const token: string = res.token;
         localStorage.setItem('token', res.token);
         this.setToken(token);
-
+        this.isUserLoggedIn.next(true);
         this.router.navigate(['/all-heroes']);
       })
     );
