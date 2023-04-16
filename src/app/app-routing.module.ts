@@ -5,10 +5,11 @@ import { SignupPageComponent } from './components/auth/signup-page/signup-page.c
 import { AllHeroesComponent } from './components/heroes/all-heroes/all-heroes.component';
 import { MyHeroesComponent } from './components/heroes/my-heroes/my-heroes.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path:'login', component:LoginPageComponent},
-  {path:'sign-up', component:SignupPageComponent},
+  {path:'login', component:LoginPageComponent,canActivate:[LoginGuard]},
+  {path:'sign-up', component:SignupPageComponent,canActivate:[LoginGuard]},
   {path:'all-heroes', component:AllHeroesComponent,canActivate:[AuthGuard]},
   {path:'my-heroes', component:MyHeroesComponent,canActivate:[AuthGuard]},
   {path:'',redirectTo:'login', pathMatch:'full'},
