@@ -11,9 +11,10 @@ export class AuthService {
     string | null
   >('');
 
-
   token: Observable<string | null> = this._token.asObservable();
-  isUserLoggedIn: BehaviorSubject<boolean> =new BehaviorSubject<boolean>(false);
+  isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
   constructor(private router: Router, private http: HttpClient) {}
 
