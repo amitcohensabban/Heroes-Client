@@ -1,0 +1,45 @@
+.heroes-container {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .hero {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 0px 3px 34px -5px #000000;
+    box-shadow: 0px 3px 34px -5px #000000;
+    padding: 10px;
+    border-radius: 10px;
+    .spiderman {
+      width: 280px;
+      height: 300px;
+      background: url("../../photos/spiderMan.png");
+      background-size: cover;
+      border-radius: 5px;
+    }
+    .superman {
+      width: 280px;
+      height: 300px;
+      background: url("../../photos/superman.png");
+      background-size: cover;
+      border-radius: 5px;
+    }
+    .batman {
+      width: 280px;
+      border-radius: 5px;
+      height: 300px;
+      background: url("../../photos/batman.png");
+      background-size: cover;
+    }
+    .hulk{
+      width: 280px;
+      border-radius: 5px;
+      height: 300px;
+      background: url("../../photos/hulk.png");
+      background-size: cover;
+    }
+  }
+}

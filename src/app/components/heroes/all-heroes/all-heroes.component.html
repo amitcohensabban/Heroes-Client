@@ -1,13 +1,28 @@
-<div *ngFor="let hero of allHeroes">
-  {{hero.name}}
-  {{hero.ability}}
-  {{hero.startingPower}}
-  {{hero.currentPower}}
-  {{hero.lastTrainingDate}}
-
-
+<div class="heroes-container">
+  <div class="hero" *ngFor="let hero of allHeroes">
+    <div
+      [ngClass]="{
+        spiderman: hero.name === 'spiderman',
+        superman: hero.name === 'superman',
+        batman: hero.name === 'batman',
+        hulk:hero.name === 'hulk'
+      }"
+    ></div>
+    <div>
+      {{ hero.name }}
+    </div>
+    <div>
+      {{ hero.ability }}
+    </div>
+    <div>
+      {{ hero.startingPower }}
+    </div>
+    <div>
+      {{ hero.currentPower }}
+    </div>
+    <div>
+      {{ hero.lastTrainingDate }}
+    </div>
+    <button>TRAIN</button>
+  </div>
 </div>
-
-
-
-
