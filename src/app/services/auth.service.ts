@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,15 +24,13 @@ export class AuthService {
     email: string;
     password: string;
     confirmPassword: string;
-  }) {
+  }): Observable<{ token: string; email: string; password: string }> {
     return this.http.post('https://localhost:7077/api/Guide', data).pipe(
-      tap((res: any): void => {
+      map((res: any) => {
         const token: string = res.token;
-
-        localStorage.setItem('token', res.token);
-        this.setToken(token);
-
-        this.router.navigate(['/all-heroes']);
+        const email: string = data.email;
+        const password: string = data.password;
+        return { token, email, password };
       })
     );
   }

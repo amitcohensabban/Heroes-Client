@@ -9,13 +9,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SignupFormComponent } from './components/auth/signup-page/signup-form/signup-form.component';
 import { SignupPageComponent } from './components/auth/signup-page/signup-page.component';
-import { LoginFormComponent} from './components/auth/login-page/login-form/login-form.component';
+import { LoginFormComponent } from './components/auth/login-page/login-form/login-form.component';
 import { LoginPageComponent } from './components/auth/login-page/login-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AllHeroesComponent } from './components/heroes/all-heroes/all-heroes.component';
 import { MyHeroesComponent } from './components/heroes/my-heroes/my-heroes.component';
-
 
 @NgModule({
   declarations: [
@@ -24,7 +23,9 @@ import { MyHeroesComponent } from './components/heroes/my-heroes/my-heroes.compo
     SignupPageComponent,
     LoginFormComponent,
     LoginPageComponent,
-    HeaderComponent,AllHeroesComponent,MyHeroesComponent
+    HeaderComponent,
+    AllHeroesComponent,
+    MyHeroesComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,9 +34,9 @@ import { MyHeroesComponent } from './components/heroes/my-heroes/my-heroes.compo
     RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CommonModule 
+    CommonModule,
   ],
   providers: [HttpClient],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

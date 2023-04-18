@@ -8,17 +8,24 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {path:'login', component:LoginPageComponent,canActivate:[LoginGuard]},
-  {path:'sign-up', component:SignupPageComponent,canActivate:[LoginGuard]},
-  {path:'all-heroes', component:AllHeroesComponent,canActivate:[AuthGuard]},
-  {path:'my-heroes', component:MyHeroesComponent,canActivate:[AuthGuard]},
-  {path:'',redirectTo:'login', pathMatch:'full'},
-  {path:'**', redirectTo:'login'},
-
+  { path: 'login', component: LoginPageComponent, canActivate: [LoginGuard] },
+  {
+    path: 'sign-up',
+    component: SignupPageComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'all-heroes',
+    component: AllHeroesComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'my-heroes', component: MyHeroesComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
