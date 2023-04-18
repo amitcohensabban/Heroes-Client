@@ -8,21 +8,22 @@
         hulk: hero.name === 'hulk'
       }"
     ></div>
-    <div>
-      {{ hero.name }}
+    <div class="fields">
+      <div>
+       Name : {{ hero.name }}
+      </div>
+      <div>
+        ABILITY : {{ hero.abillity }}
+      </div>
+      <div>
+        STARTING POWER : {{ hero.startingPower }}
+      </div>
+      <div>
+        CURRENT POWER :  {{ hero.currentPower.toFixed(2)|number }}
+      </div>
+      <div>
+        {{ hero.lastTrainingDate|date }}
+      </div>
     </div>
-    <div>
-      {{ hero.ability }}
-    </div>
-    <div>
-      {{ hero.startingPower }}
-    </div>
-    <div>
-      {{ hero.currentPower }}
-    </div>
-    <div>
-      {{ hero.lastTrainingDate }}
-    </div>
-    <button>TRAIN</button>
   </div>
 </div>
