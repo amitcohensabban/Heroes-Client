@@ -10,10 +10,10 @@
     ></div>
     <div class="fields">
       <div>
-       Name : {{ hero.name }}
+       NAME : {{ hero.name |uppercase}}
       </div>
       <div>
-        ABILITY : {{ hero.abillity }}
+        ABILITY : {{ hero.abillity|uppercase }}
       </div>
       <div>
         STARTING POWER : {{ hero.startingPower }}
@@ -22,7 +22,7 @@
         CURRENT POWER :  {{ hero.currentPower.toFixed(2)|number }}
       </div>
       <div>
-        {{ hero.lastTrainingDate|date }}
+        LAST UPDATED :{{ hero.lastTrainingDate|date }}
       </div>
     </div>
   </div>

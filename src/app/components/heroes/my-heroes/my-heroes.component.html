@@ -1,1 +1,32 @@
-<p>my-heroes works!</p>
+
+<div class="heroes-container">
+  <div class="hero" *ngFor="let hero of myHeroes">
+    <div
+      [ngClass]="{
+        spiderman: hero.name === 'spiderman',
+        superman: hero.name === 'superman',
+        batman: hero.name === 'batman',
+        hulk: hero.name === 'hulk'
+      }"
+    ></div>
+    <div class="fields">
+      <div>
+       NAME : {{ hero.name |uppercase}}
+      </div>
+      <div>
+        ABILITY : {{ hero.abillity|uppercase }}
+      </div>
+      <div>
+        STARTING POWER : {{ hero.startingPower }}
+      </div>
+      <div>
+        CURRENT POWER :  {{ hero.currentPower.toFixed(2)|number }}
+      </div>
+      <div>
+       LAST UPDATED : {{ hero.lastTrainingDate|date }}
+      </div>
+    </div>
+    <button (click)="trainHeroButton(hero)" class="custom-btn train"><span>Click!</span><span>TRAIN</span></button>
+
+  </div>
+</div>

@@ -40,9 +40,11 @@ export class AuthService {
       tap((res: any): void => {
         const token: string = res.token;
         localStorage.setItem('token', res.token);
+        localStorage.setItem('userName', data.email);
         this.setToken(token);
         this.isUserLoggedIn.next(true);
         this.router.navigate(['/all-heroes']);
+
       })
     );
   }
