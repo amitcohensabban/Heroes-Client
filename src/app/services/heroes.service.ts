@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,8 @@ export class HeroesService {
     private http: HttpClient,
     private auth: AuthService
   ) {}
+  myHeroesSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+
   async getAllHeroes(token: string) {
     // console.log(token);
     try {
@@ -50,12 +53,17 @@ export class HeroesService {
     try {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
       console.log(headers);
+      console.log(localStorage.getItem('userName'));
+
       const res = await this.http
-        .get(
-          `https://localhost:7077/api/Heroes/users/${hero.name}/heroes/${localStorage.getItem('userName')}`,
-          { headers }
+        .patch(
+          `https://localhost:7077/api/Heroes/users/${localStorage.getItem('userName')}/heroes/${hero.name}`,
+          null, { headers }
         )
         .toPromise();
+        console.log(res);
+        
+
       return res;
     } catch (err) {
       return err;

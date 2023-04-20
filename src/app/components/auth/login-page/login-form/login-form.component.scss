@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 25px;
+    gap: 45px;
     width: 30vw;
     border-radius: 10px;
     background: linear-gradient(rgb(39, 39, 100), purple);
@@ -31,18 +31,19 @@
       flex-direction: column;
       height: 50px;
 
-
       label {
         color: #fff;
         display: flex;
+        justify-content: center;
         align-items: center;
       }
       .form-control {
-        background-color: #fff;
+        // background-color: #fff;
         border: none;
         border: radius 10px;
-        width: 200px;
+        width: 325px;
         border-radius: 10px;
+        color: black;
       }
     }
   }
@@ -63,8 +64,12 @@
     }
   }
 }
-.error-message{
-  ::placeholder{
-    color: red;
-  }
-}
+// input{
+//   color: black;
+//   &::placeholder{
+//     padding: 8px;
+//     // color: rgb(203, 12, 203);
+//     font-weight: 500;
+//     color: black;
+//   }
+//  }
