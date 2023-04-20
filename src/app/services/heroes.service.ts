@@ -62,11 +62,24 @@ export class HeroesService {
         )
         .toPromise();
         console.log(res);
-        
+
 
       return res;
     } catch (err) {
       return err;
     }
   }
-}
+
+  async addHero(token: string) {
+    console.log(token);
+    try {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      console.log(headers);
+      const res = await this.http
+        .post(`https://localhost:7077/api/Heroes/addHero?heroName=${localStorage.getItem('heroName')}`,null, { headers })
+        .toPromise();
+      return res;
+    } catch (err) {
+      return err;
+    }
+  }}

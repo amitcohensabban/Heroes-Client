@@ -9,14 +9,25 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AllHeroesComponent implements OnInit {
   constructor(
-    private HeroesService: HeroesService,
+    private heroesService: HeroesService,
     private auth: AuthService
   ) {}
   token: any = localStorage.getItem('token');
   allHeroes: any = [];
   async ngOnInit() {
-    const result = await this.HeroesService.getAllHeroes(this.token);
+    const result = await this.heroesService.getAllHeroes(this.token);
     this.allHeroes = result;
     console.log(this.allHeroes);
+  }
+
+  async addHeroButton(hero:any){
+    localStorage.setItem('heroName',hero.name);
+    const token=(localStorage.getItem('token')||'');
+
+    const res = await this.heroesService.addHero(token);
+    console.log(res);
+    if (res) {
+      console.log('add hero');
+    }
   }
 }
